@@ -1,0 +1,11 @@
+anthropic==0.34.2
+atlassian-python-api==3.41.11
+beautifulsoup4==4.12.3
+deeplake[enterprise]==3.8.22
+lancedb==0.14.0
+openai==1.52.2
+pypdf==4.2.0
+slack-bolt>=1.18.1
+tantivy==0.22.0
+vertexai==1.63.0
+weaviate-client==4.9.0

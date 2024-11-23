@@ -1,0 +1,19 @@
+{
+    "s3": "kale-stresstest-clients",
+    "s3key": "kale-stress-test.tgz",
+    "loadtestExec": "rm -rf /usr/local/stress-test/bin",
+    "envVariableList": [
+        {
+            "EnvName": "num_pings",
+            "EnvValue": "100"
+        },
+        {
+            "EnvName": "ping_interval",
+            "EnvValue": "500"
+        },
+        {
+            "EnvName": "host",
+            "EnvValue": "https://www.google.com/"
+        }
+    ]
+}
