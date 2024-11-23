@@ -95,6 +95,6 @@ jobs:
         regions: ${{ inputs.REGIONS }}
         desired_capacity: ${{ inputs.DESIRED_CAPACITY }}
         stress_test_loader_allowed_cidr: "1.1.1.1/32" # dummy value
-        s3_client_bucket_name: ${{ secrets.STRESSTESTLOADER_S3_CLIENT_BUCKET_NAME }}
+        exp: ${{ secrets.STRESSTESTLOADER_S3_CLIENT_BUCKET_NAME }}
         s3_log_bucket_name: ${{ secrets.STRESSTESTLOADER_S3_LOG_BUCKET_NAME }}
 

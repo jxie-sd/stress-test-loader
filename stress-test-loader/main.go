@@ -143,7 +143,7 @@ func (t *ChanStruct) startStressTest(in *pb.TestRequest) (err error) {
 		return
 	}
 
-	t.cmd = exec.Command(StressTestLoaderConfig.WorkingFolder + "/bin" + "/" + in.LoadtestExec)
+	t.cmd = exec.Command("/bin/sh", StressTestLoaderConfig.WorkingFolder+"/bin"+"/"+in.LoadtestExec)
 	t.cmd.Env = os.Environ()
 	for _, s := range in.EnvVariableList {
 		t.cmd.Env = append(t.cmd.Env, s.EnvName+"="+s.EnvValue)

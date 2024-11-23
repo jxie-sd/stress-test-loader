@@ -44,14 +44,23 @@ build {
     source      = "cert"
     destination = "/tmp/cert"
   }
+  provisioner "file" {
+    source      = "cicd/python"
+    destination = "/tmp/python"
+  }
   provisioner "shell" {
     inline = [
       "echo set debconf to Noninteractive",
       "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections",
       "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done",
       "sudo rm -rf /var/lib/apt/lists/partial/",
+      "sudo add-apt-repository ppa:deadsnakes/ppa",
       "sudo apt-get -y -q update",
       "sudo apt-get -y -q upgrade ",
+      "sudo apt-get install -y python3.12",
+      "sudo apt-get install -y python3.12-venv",
+      "sudo python3.12 -m venv /usr/local/venv",
+      "sudo /usr/local/venv/bin/pip install -r /tmp/python/requirements.txt",
       "sudo apt-get install -y prometheus-node-exporter",
 
       "sudo mkdir -p /usr/local/stress-test-loader",
@@ -77,10 +86,11 @@ build {
       "sudo systemctl enable prometheus-node-exporter",
       "sudo systemctl enable stress-test-loader.service",
 
-      "sudo wget -qO- https://repos.influxdata.com/influxdb.key | sudo tee /etc/apt/trusted.gpg.d/influxdb.asc >/dev/null",
+
+      // "sudo wget -qO- https://repos.influxdata.com/influxdb.key | sudo tee /etc/apt/trusted.gpg.d/influxdb.asc >/dev/null",
       // "sudo source /etc/os-release",
-      "sudo echo \"deb https://repos.influxdata.com/$ID $VERSION_CODENAME stable\" | sudo tee /etc/apt/sources.list.d/influxdb.list",
-      "sudo sudo apt-get update && sudo apt-get install telegraf",
+      // "sudo echo \"deb https://repos.influxdata.com/$ID $VERSION_CODENAME stable\" | sudo tee /etc/apt/sources.list.d/influxdb.list",
+      // "sudo sudo apt-get update && sudo apt-get install telegraf",
 
       "sudo apt-get clean"
     ]

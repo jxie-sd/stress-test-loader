@@ -52,7 +52,7 @@ Once you have created an AWS AMI for stress-test, you can use infra-pulumi to cr
 
 ### pulumi stress infrastructure 
 
-1. Need following variables: 
+1. Need following shell environment variables: 
 * [public_key](https://www.techrepublic.com/article/how-to-view-your-ssh-keys-in-linux-macos-and-windows/): your ssh public key; 
 * [stress_test_loader_allowed_cidr](https://ifconfig.me/): your machine's public IP; when running in GitHub Actions, this should be the GitHub runner's public IP (feel free to check out our workflow);
 * [s3_client_bucket_name](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html): the name of your AWS S3 bucket to store the stress test client executable; 
