@@ -19,7 +19,7 @@ public class StressConfig
     public string AmiName { get; set; } = "stl-stress_test_loader-cluster";
     public string SourceAmiRegion { get; set; } = "us-west-2";
     public List<string> EgressAllowedCidrBlocks { get; set; } = new List<string> {"0.0.0.0/0"};
-    public string InstanceType { get; set; } = "t4g.large";
+    public string InstanceType { get; set; } = "t4g.small";
     public string TelegrafUsername { get; set; } = "admin";
     public string TelegrafPassword { get; set; } = "";
     public string TelegrafUrl { get; set; } = "";

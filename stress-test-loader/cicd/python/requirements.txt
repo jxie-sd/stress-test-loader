@@ -9,3 +9,4 @@ slack-bolt>=1.18.1
 tantivy==0.22.0
 vertexai==1.63.0
 weaviate-client==4.9.0
+pandas==2.2.3
